@@ -8,10 +8,10 @@
 		<version>2.3.5.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.testspring.jpa</groupId>
+	<groupId>com.testspringjpa</groupId>
 	<artifactId>course-api-with-db</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>course-api-with-db</name>
+	<name>course-api-with-db-1</name>
 	<description>Demo project for Spring Boot with JPA</description>
 
 	<properties>
@@ -27,7 +27,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.apache.derby</groupId>
 			<artifactId>derby</artifactId>
@@ -42,7 +41,7 @@
 					<groupId>org.junit.vintage</groupId>
 					<artifactId>junit-vintage-engine</artifactId>
 				</exclusion>
-			</exclusions>
+			</exclusions>			
 		</dependency>
 	</dependencies>
 
