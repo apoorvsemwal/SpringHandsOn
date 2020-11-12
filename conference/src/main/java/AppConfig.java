@@ -1,16 +1,14 @@
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
-
-import com.conference.repository.HibernateSpeakerRepositoryImpl;
-import com.conference.repository.SpeakerRepository;
-import com.conference.service.SpeakerService;
-import com.conference.service.SpeakerServiceImpl;
 
 @Configuration
+@ComponentScan({"com.conference"})
 public class AppConfig {
 
+	/*
+	Entire Bean Definition is not required now since we ask spring to do a component scan and autowire
+	dependencies. We have now marked
+	
 	@Bean(name = "speakerService") //Proper Naming is essential if we want to enable Autowire by Name Later.
 	@Scope(value = BeanDefinition.SCOPE_SINGLETON)
 	public SpeakerService getSpeakerService() { //Function name can be anything.
@@ -23,13 +21,16 @@ public class AppConfig {
 		//Constructor Injection
 		//getSpeakerRepository() is not required since its autowired and automatically injected.
 		SpeakerServiceImpl speakerService = new SpeakerServiceImpl();
-		
-		
 		return speakerService;
 	}
+	*/
 	
+	/*
+	Entire Bean Definition is not required now since we ask spring to do a component scan and autowire
+	dependencies 
 	@Bean(name = "speakerRepository")
 	public SpeakerRepository getSpeakerRepository() {
 		return new HibernateSpeakerRepositoryImpl();
 	}
+	*/
 }
