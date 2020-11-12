@@ -2,6 +2,8 @@ package com.conference.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.conference.model.Speaker;
 import com.conference.repository.SpeakerRepository;
 
@@ -12,6 +14,12 @@ public class SpeakerServiceImpl implements SpeakerService {
 	
 	private SpeakerRepository speakerRepo;
 	
+	
+	
+	public SpeakerServiceImpl() {
+		super();
+	}
+
 	//For constructor based injection
 	public SpeakerServiceImpl(SpeakerRepository speakerRepo) {
 		super();
@@ -19,6 +27,9 @@ public class SpeakerServiceImpl implements SpeakerService {
 	}
 	
 	//For setter based injection
+	//This will automatically inject this dependency which we were calling explicitly earlier 
+	//in the config class.
+	@Autowired 
 	public void setSpeakerRepo(SpeakerRepository speakerRepo) {
 		this.speakerRepo = speakerRepo;
 	}
