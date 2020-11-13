@@ -17,6 +17,7 @@
                         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/webapp"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources/static"/>
                         
         
         <property name="context-root" value="conference"/>

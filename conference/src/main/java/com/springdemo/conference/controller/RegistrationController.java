@@ -13,12 +13,14 @@ public class RegistrationController {
 	@RequestMapping(value = "/registration", method = RequestMethod.GET)
 	public String registration (@ModelAttribute("registration")Registration registration) {
 		//@ModelAttrb is bound at the JSP Page
-		return "/WEB-INF/jsp/registration.jsp";		
+		//return "/WEB-INF/jsp/registration.jsp";	//ViewResolver will receive this string and find it.
+		return "registration";
 	}
 
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
 	public String addRegistration (@ModelAttribute("registration")Registration registration) {
 		System.out.println("Registration:"+registration.getName());
-		return "/WEB-INF/jsp/registration.jsp";		
+		//return "/WEB-INF/jsp/registration.jsp";
+		return "registration";
 	}	
 }

@@ -17,16 +17,8 @@ public class GreetingController {
 		model.put("message", "Hello Apoorv");
 		
 		//Returning the name of the jsp page we want to render next.
-		//Based on the config(Prefix and Suffix) we have defined in application.properties Spring
-		//knows where to look for JSP pages.
-		return "/WEB-INF/jsp/greeting.jsp";
-		
-		//return "greeting";
-		//Somehow application properties is not being read.
+		//Based on the config(Prefix and Suffix) we have defined in application.properties or
+		//ViewResolver Bean in config class - Spring knows where to look for JSP pages.
+		return "greeting";		
 	}
-	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-    public String home() {
-        return "/index.html";
-    }	
 }
