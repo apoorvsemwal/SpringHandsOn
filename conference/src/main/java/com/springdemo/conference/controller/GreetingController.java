@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class GreetingController {
 
 	@RequestMapping(value = "/greeting", method = RequestMethod.GET)
-	public String greeting (Map<String, Object> model) {
+	public String greeting (Map<String, Object> model) { //Method name does not matter here
 		
 		//Setting attrb to be passed back to jsp. In greeting jsp we have coded this key message.
 		//View(JSPs) will have access to this model.
@@ -24,7 +24,7 @@ public class GreetingController {
 		//return "greeting";
 		//Somehow application properties is not being read.
 	}
-    
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String home() {
         return "/index.html";
