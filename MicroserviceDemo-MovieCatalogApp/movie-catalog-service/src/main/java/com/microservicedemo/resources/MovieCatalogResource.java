@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,12 +18,12 @@ import com.microservicedemo.models.Rating;
 @RequestMapping("/catalog")   //Root URL - Redirect any URL starting with /catalog to this class
 public class MovieCatalogResource {
 	
+	@Autowired
+	private RestTemplate restTemplate;
+	
 	@RequestMapping("{/userId}") // equivalent to - /catalog/userId - /catalog comes from class level.
 	public List<CatalogItem> getCatalog(@PathVariable("userId") String userId) {
-		
-		RestTemplate restTemplate = new RestTemplate();
-		
-		
+				
 		//Lets assume for the time being that the ratings API from ratings microservice returned this.
 		List<Rating> ratings = Arrays.asList(
 				new Rating("1234", 4),
