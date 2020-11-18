@@ -1,11 +1,11 @@
 package com.microservicedemo.models;
 
 public class CatalogItem {
-	
+
 	private String name;	
 	private String desc;
 	private int rating;
-	
+
 	public CatalogItem(String name, String desc, int rating) {
 		super();
 		this.name = name;

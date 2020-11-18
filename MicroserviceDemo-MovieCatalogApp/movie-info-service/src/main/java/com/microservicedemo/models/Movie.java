@@ -3,7 +3,7 @@ package com.microservicedemo.models;
 public class Movie {
 	private String movieId;
 	private String name;
-	
+
 	public Movie(String movieId, String name) {
 		super();
 		this.movieId = movieId;
@@ -21,5 +21,5 @@ public class Movie {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 }

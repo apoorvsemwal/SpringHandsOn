@@ -7,14 +7,14 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class MovieCatalogServiceConfig {
-	
+
 	@Bean
 	public RestTemplate getRestTemplate() {
 		return new RestTemplate();
 	}
 
-//	@Bean
-//	public WebClient.Builder getWebClientBuilder() {
-//		return WebClient.builder();
-//	}	
+	//	@Bean
+	//	public WebClient.Builder getWebClientBuilder() {
+	//		return WebClient.builder();
+	//	}	
 }
