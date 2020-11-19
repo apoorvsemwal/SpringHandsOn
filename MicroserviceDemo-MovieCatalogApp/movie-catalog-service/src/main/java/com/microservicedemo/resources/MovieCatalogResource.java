@@ -27,12 +27,15 @@ public class MovieCatalogResource {
 	@RequestMapping("/{userId}") // equivalent to - /catalog/userId - /catalog comes from class level.
 	public List<CatalogItem> getCatalog(@PathVariable("userId") String userId) {
 
-		UserRating usersRatings = restTemplate.getForObject("http://localhost:8083/users/"+userId, UserRating.class);
+		//No hardcoding now we will be using service discovery - client side.
+		//UserRating usersRatings = restTemplate.getForObject("http://localhost:8083/users/"+userId, UserRating.class);
+		UserRating usersRatings = restTemplate.getForObject("http://rating-data-service/users/"+userId, UserRating.class);
 
 		return usersRatings.getUserRatings().stream().map(rating -> {
 			//For each rating item above we create a new catalog item. Also The name
 			//is coming from movie-info-service.			
-			Movie movie = restTemplate.getForObject("http://localhost:8082/movies/"+rating.getMovieId(), Movie.class);
+			//Movie movie = restTemplate.getForObject("http://localhost:8082/movies/"+rating.getMovieId(), Movie.class);
+			Movie movie = restTemplate.getForObject("http://movie-info-service/movies/"+rating.getMovieId(), Movie.class);
 
 			//Using WebClient in place of RestTemplate - Rest of the logic remains the same.
 			//			Movie movie = webClientBuilder.build()
