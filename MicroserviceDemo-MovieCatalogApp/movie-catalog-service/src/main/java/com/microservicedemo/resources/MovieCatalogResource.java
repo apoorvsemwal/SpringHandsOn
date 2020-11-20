@@ -31,7 +31,7 @@ public class MovieCatalogResource {
 		//UserRating usersRatings = restTemplate.getForObject("http://localhost:8083/users/"+userId, UserRating.class);
 		UserRating usersRatings = restTemplate.getForObject("http://rating-data-service/users/"+userId, UserRating.class);
 
-		return usersRatings.getUserRatings().stream().map(rating -> {
+		return usersRatings.getRatings().stream().map(rating -> {
 			//For each rating item above we create a new catalog item. Also The name
 			//is coming from movie-info-service.			
 			//Movie movie = restTemplate.getForObject("http://localhost:8082/movies/"+rating.getMovieId(), Movie.class);
