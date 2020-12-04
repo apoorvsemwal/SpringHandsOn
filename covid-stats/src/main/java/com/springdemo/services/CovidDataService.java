@@ -21,7 +21,7 @@ import com.springdemo.models.CovidStatsByLocation;
 @Service
 public class CovidDataService {
 
-	private static List<CovidStatsByLocation> allCovidStats = new ArrayList<CovidStatsByLocation>();
+	private List<CovidStatsByLocation> allCovidStats = new ArrayList<CovidStatsByLocation>();
 
 	//We'll use HTTP client to make HTTP Calls.
 	private static String dataUrl = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
@@ -30,7 +30,7 @@ public class CovidDataService {
 	//After this service instance is constructed just call this method to fetch the data using
 	//an HTTP request. So this method is called automatically by Spring when app starts.
 
-	@Scheduled(cron = "* * 1 * * * *") //Its like saying execute this method every one hour.
+	@Scheduled(cron = "* * 1 * * *") //Its like saying execute this method every one hour.
 	//Format is like sec min hr day month year
 	//To run a method on a regular basis. Otherwise our data becomes out-dated on the next day while
 	//the app is running say on some cloud service provider.
@@ -62,6 +62,11 @@ public class CovidDataService {
 			stat.setLatestCaseCount(Integer.parseInt(record.get(record.size()-1).trim()));
 			covidStats.add(stat);
 		}
-		CovidDataService.allCovidStats = covidStats;
+		this.allCovidStats = covidStats;
 	}
+
+	public List<CovidStatsByLocation> getAllCovidStats() {
+		return this.allCovidStats;
+	}
+	
 }

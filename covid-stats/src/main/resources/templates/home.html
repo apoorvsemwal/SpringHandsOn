@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>Daily Covid Stats....</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+
+  <body>
+  
+    <p th:text="${pageTitle}"></p>
+    <table>
+      <tr>
+        <th>State</th>
+        <th>Country</th>
+        <th>Total Cases Reported Today</th>
+      </tr>
+      <tr th:each="stat : ${covidStats}">
+        <td th:text="${stat.state}"></td>
+        <td th:text="${stat.country}"></td>
+        <td th:text="${stat.latestCaseCount}">0</td>
+      </tr>
+    </table>
+      
+  </body>
+
+</html>
