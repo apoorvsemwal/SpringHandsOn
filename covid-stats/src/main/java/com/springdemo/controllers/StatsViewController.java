@@ -33,7 +33,7 @@ public class StatsViewController {
 		//Its like setting the key value pair.
 		model.addAttribute("covidStats", covidStats);
 		model.addAttribute("totalReportedCases", totalNumberOfCases);
-		model.addAttribute("pageTitle", "Country/Province wise daily COVID Stats...");
+		model.addAttribute("appInfo", "This app displays COVID cases reported across the globe for the current day...");
 		
 		return "home"; //Name of the HTML file we have created in templates folder
 		//Thmyeleaf receives it and looks up this html file for us and renders it.
