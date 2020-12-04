@@ -1,10 +1,13 @@
 package com.springdemo.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.springdemo.models.CovidStatsByLocation;
 import com.springdemo.services.CovidDataService;
 
 @Controller
@@ -24,8 +27,12 @@ public class StatsViewController {
 	//Calling the root URL
 	public String getMainViewTemplateName(Model model) {
 		
+		List<CovidStatsByLocation> covidStats = covidDataService.getAllCovidStats();
+		int totalNumberOfCases = covidStats.stream().mapToInt(stat -> stat.getLatestCaseCount()).sum();
+		
 		//Its like setting the key value pair.
-		model.addAttribute("covidStats", covidDataService.getAllCovidStats());
+		model.addAttribute("covidStats", covidStats);
+		model.addAttribute("totalReportedCases", totalNumberOfCases);
 		model.addAttribute("pageTitle", "Country/Province wise daily COVID Stats...");
 		
 		return "home"; //Name of the HTML file we have created in templates folder
