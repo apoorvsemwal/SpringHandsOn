@@ -29,11 +29,13 @@ public class StatsViewController {
 		
 		List<CovidStatsByLocation> covidStats = covidDataService.getAllCovidStats();
 		int totalNumberOfCases = covidStats.stream().mapToInt(stat -> stat.getLatestCaseCount()).sum();
+		int totalDeltaOfCasesFromPrevDay = covidStats.stream().mapToInt(stat -> stat.getDiffFromPrevDay()).sum();
 		
 		//Its like setting the key value pair.
 		model.addAttribute("covidStats", covidStats);
 		model.addAttribute("totalReportedCases", totalNumberOfCases);
-		model.addAttribute("appInfo", "This app displays COVID cases reported across the globe for the current day...");
+		model.addAttribute("totalDeltaOfCasesFromPrevDay", totalDeltaOfCasesFromPrevDay);
+		model.addAttribute("appInfo", "This app displays confirmed COVID case counts reported across the globe up untill yesterday and the change in count from the day before...");
 		
 		return "home"; //Name of the HTML file we have created in templates folder
 		//Thmyeleaf receives it and looks up this html file for us and renders it.

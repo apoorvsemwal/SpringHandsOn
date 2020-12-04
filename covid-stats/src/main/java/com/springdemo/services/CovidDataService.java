@@ -40,7 +40,7 @@ public class CovidDataService {
 		//we dont want them to receive error/empty msgs so we fill up this list here and then copy
 		//it over to the global list. By the time this local list is getting populated users can be
 		//served from the global list. This however is not the best way to do it. We don't create
-		//globals like that.
+		//globals like that. Also we never really save states in a service.
 		List<CovidStatsByLocation> covidStats = new ArrayList<CovidStatsByLocation>();
 
 		HttpClient client = HttpClient.newHttpClient();
