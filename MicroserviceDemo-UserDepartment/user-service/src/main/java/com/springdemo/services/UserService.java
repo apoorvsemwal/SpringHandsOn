@@ -31,7 +31,7 @@ public class UserService {
 		UserDepartmentWrapper userDept = new UserDepartmentWrapper();
 		User user = userRepository.findByUserId(userId);
 
-		Department department = restTemplate.getForObject("http://localhost:8765/departments/" + user.getDepartmentId(),Department.class);
+		Department department = restTemplate.getForObject("http://DEPARTMENT-SERVICE/departments/" + user.getDepartmentId(),Department.class);
 
 		userDept.setUser(user);
 		userDept.setDepartment(department);
