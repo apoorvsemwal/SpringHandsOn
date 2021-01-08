@@ -1,6 +1,13 @@
 server:
   port: 8763
 
+hystrix:
+  departmentService:
+    execution:
+      isolation:
+        thread:
+          timeoutInMilliseconds: 2000
+      
 spring:
   application:
     name: API-GATEWAY
@@ -11,12 +18,25 @@ spring:
           uri:  lb://USER-SERVICE
           predicates:
             - Path=/users/**
-            
+                 
         - id: DEPARTMENT-SERVICE
           uri:  lb://DEPARTMENT-SERVICE
           predicates:
+            - Method=GET,POST,DELETE,PUT
             - Path=/departments/**
+          filters:
+          - name: Hystrix
+            args:
+              name: departmentService
+              fallbackUri: forward:/departmentServiceFallBack          
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+  
+  
 eureka:
   client:
     register-with-eureka: true
