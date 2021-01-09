@@ -1,0 +1,23 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: CONFIG-SERVER
+  cloud:
+    config:
+      server:
+        git:
+#          uri: C:\\Users\\I538130\\user-dept-config-repo         
+          uri: https://github.com/apoorvsemwal/user-dept-config-repo.git
+          clone-on-start: true        
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    enabled: true
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka

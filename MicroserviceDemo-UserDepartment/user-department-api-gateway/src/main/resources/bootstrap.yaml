@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: CONFIG-SERVER
+      name: API-GATEWAY
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: HYSTRIX-DASHBOARD
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: CONFIG-SERVER
+      name: HYSTRIX-DASHBOARD
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/   
